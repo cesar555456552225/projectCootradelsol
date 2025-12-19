@@ -1,0 +1,626 @@
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            text-align: center;
+            overflow-x: hidden;
+            background: #e0dfdf;
+        }
+
+        /* Animaciones */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+        }
+
+        /* Navegación moderna */
+        nav {
+            padding: 20px 40px;
+            background: linear-gradient(135deg, #0066cc 0%, #004080 100%);
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            animation: slideInLeft 0.8s ease;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            border: 3px solid white;
+            transition: transform 0.3s ease;
+            animation: pulse 2s infinite;
+        }
+
+        .logo:hover {
+            transform: rotate(360deg) scale(1.1);
+        }
+
+        .cootra {
+            font-size: clamp(24px, 4vw, 42px);
+            margin: 0;
+            color: white;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .lista-nav {
+            display: flex;
+            list-style: none;
+            gap: 15px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .lista-nav ol {
+            list-style: none;
+        }
+
+        .lista-nav a {
+            text-decoration: none;
+            color: white;
+            font-size: clamp(15px, 2vw, 18px);
+            padding: 12px 24px;
+            display: block;
+            white-space: nowrap;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .lista-nav a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.2);
+            transition: left 0.4s ease;
+        }
+
+        .lista-nav a:hover::before {
+            left: 100%;
+        }
+
+        .lista-nav a:hover {
+            background-color: rgba(255, 255, 255, 0.25);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Hero Section */
+        .hero-section {
+            padding: 60px 20px;
+            background: linear-gradient(135deg, #0066cc 0%, #004080 100%);
+            color: white;
+            animation: fadeInUp 1s ease;
+        }
+
+        h1 {
+            margin: 30px 15px;
+            font-size: clamp(28px, 5vw, 48px);
+            line-height: 1.4;
+            text-align: center;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .petrobras {
+            max-width: 90%;
+            width: 900px;
+            height: auto;
+            border-radius: 20px;
+            margin: 30px auto;
+            display: block;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+            transition: transform 0.5s ease, box-shadow 0.5s ease;
+            animation: fadeInUp 1.2s ease;
+        }
+
+        .petrobras:hover {
+            transform: scale(1.03) translateY(-10px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+        }
+
+        /* Secciones modernas */
+        .section-title {
+            color: #7a0e0e;
+            font-size: clamp(32px, 5vw, 48px);
+            font-weight: 800;
+            margin: 60px 0 20px;
+            position: relative;
+            display: inline-block;
+            animation: fadeInUp 0.8s ease;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60%;
+            height: 4px;
+            background: linear-gradient(90deg, #0066cc, #7a0e0e);
+            border-radius: 2px;
+        }
+
+        .linea {
+            background: linear-gradient(90deg, transparent, #7a0e0e, transparent);
+            height: 2px;
+            margin: 20px auto 50px;
+            border-radius: 5px;
+            max-width: 600px;
+        }
+
+        /* Misión y Visión */
+        .e {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            padding: 40px;
+            margin: 40px auto;
+            max-width: 1400px;
+            flex-wrap: wrap;
+        }
+
+        .card {
+            width: 100%;
+            max-width: 450px;
+            background: white;
+            border-radius: 20px;
+            padding: 35px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            animation: fadeInUp 1s ease;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, #0066cc, #7a0e0e);
+        }
+
+        .card:hover {
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: 0 20px 50px rgba(0, 102, 204, 0.3);
+        }
+
+        .card-title {
+            color: #7a0e0e;
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .card-text {
+            margin: 15px 0;
+            line-height: 1.8;
+            color: #555;
+            font-size: 16px;
+        }
+
+        /* Servicios */
+        .servicios {
+            display: flex;
+            justify-content: center;
+            align-items: stretch;
+            flex-wrap: wrap;
+            gap: 40px;
+            padding: 40px;
+            margin: 40px auto;
+            max-width: 1400px;
+        }
+
+        .servicios .card {
+            width: 100%;
+            max-width: 350px;
+            animation-delay: 0.2s;
+        }
+
+        .servicios .card h3 {
+            color: #7a0e0e;
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .card-img-top {
+            border-radius: 15px;
+            margin-top: 20px;
+            transition: transform 0.4s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-img-top:hover {
+            transform: scale(1.08);
+        }
+
+        /* Rutas */
+        .rutas {
+            background: white;
+            margin: 40px auto;
+            padding: 50px 30px;
+            border-radius: 25px;
+            max-width: 1400px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            animation: fadeInUp 1s ease;
+        }
+
+        .titulo-ruta {
+            font-size: 36px;
+            margin-bottom: 30px;
+            color: #7a0e0e;
+            font-weight: 800;
+        }
+
+        .contenedor-rutas {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+
+        .ruta {
+            width: 280px;
+            padding: 30px;
+            border-radius: 25px;
+            color: white;
+            font-size: 18px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .ruta::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: rgba(255, 255, 255, 0.1);
+            transform: rotate(45deg);
+            transition: all 0.6s ease;
+        }
+
+        .ruta:hover::before {
+            top: -100%;
+            right: -100%;
+        }
+
+        .ruta:hover {
+            transform: translateY(-12px) scale(1.05);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .ruta h5 {
+            font-size: 22px;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .ruta ul {
+            list-style: none;
+            margin-top: 15px;
+            padding-left: 0;
+        }
+
+        .ruta li {
+            margin: 10px 0;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .ruta li::before {
+            content: '▶';
+            position: absolute;
+            left: 0;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .ruta1c {
+            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+        }
+
+        .ruta1c-2 {
+            background: linear-gradient(135deg, #eb3349 0%, #f45c43 100%);
+        }
+
+        /* Rutas Intermunicipales */
+        .info-intermunicipales {
+            background: white;
+            border-left: 6px solid #7a0e0e;
+            border-radius: 15px;
+            margin: 30px;
+            padding: 35px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            transition: all 0.4s ease;
+            animation: slideInRight 0.8s ease;
+        }
+
+        .info-intermunicipales:hover {
+            transform: translateX(10px);
+            box-shadow: 0 12px 35px rgba(0, 102, 204, 0.2);
+        }
+
+        .sogamoso-aquitania {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 35px;
+            flex-wrap: wrap;
+        }
+
+        .titulo-intermunicipales {
+            font-size: 28px;
+            margin-bottom: 20px;
+            color: #7a0e0e;
+            font-weight: 700;
+        }
+
+        .imagen-destino {
+            width: 300px;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            transition: transform 0.4s ease;
+        }
+
+        .imagen-destino:hover {
+            transform: scale(1.1) rotate(2deg);
+        }
+
+        .horarios {
+            background: linear-gradient(135deg, #0066cc 0%, #004080 100%);
+            padding: 25px;
+            border-radius: 15px;
+            color: white;
+        }
+
+        .horarios h6 {
+            font-size: 22px;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .horarios p {
+            color: white !important;
+            font-size: 16px;
+            line-height: 1.8;
+        }
+
+        /* Footer moderno */
+        footer {
+            background: linear-gradient(135deg, #0066cc 0%, #004080 100%);
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            padding: 50px 30px;
+            color: white;
+            margin-top: 60px;
+            animation: fadeInUp 1s ease;
+        }
+
+        .section-1-footer,
+        .section-2-footer {
+            width: 280px;
+            margin: 20px;
+        }
+
+        .footer-title {
+            color: white;
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .section-1-footer p,
+        .section-2-footer p {
+            margin: 10px 0;
+            line-height: 1.8;
+        }
+
+        .section-2-footer h6 {
+            font-size: 20px;
+            font-weight: 700;
+            margin: 20px 0 10px;
+        }
+
+        .redes-footer {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+            justify-content: center;
+        }
+
+        .redes-footer img {
+            border-radius: 50%;
+            transition: transform 0.3s ease;
+            background: white;
+            padding: 5px;
+        }
+
+        .redes-footer img:hover {
+            transform: scale(1.2) rotate(360deg);
+        }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .e, .servicios {
+                margin: 20px;
+                padding: 20px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                text-align: center;
+                padding: 20px;
+            }
+
+            .logo-container {
+                flex-direction: column;
+            }
+
+            .lista-nav {
+                width: 100%;
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .lista-nav a {
+                width: 100%;
+            }
+
+            .petrobras {
+                max-width: 95%;
+            }
+
+            .card {
+                margin: 15px auto;
+                width: 90%;
+            }
+
+            .e, .servicios {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            nav {
+                padding: 15px;
+            }
+
+            .logo {
+                width: 60px;
+                height: 60px;
+            }
+
+            h1 {
+                margin: 20px 10px;
+            }
+
+            .lista-nav a {
+                padding: 12px;
+                font-size: 16px;
+            }
+
+            .card {
+                width: 100%;
+            }
+
+            .rutas {
+                margin: 20px;
+                padding: 20px;
+            }
+
+            .contenedor-rutas {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .ruta {
+                width: 90%;
+            }
+        }
+
+    /* Carrusel tipo tarjeta moderna */
+#carouselExampleControls {
+    width: 100%;
+    max-width: 850px; /* tamaño tipo tarjeta elegante */
+    margin: 30px auto;
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 6px 25px rgba(0,0,0,0.25);
+}
+
+/* Imágenes del carrusel */
+.img-carrusel {
+    width: 100%;
+    height: 470px; /* altura ideal como la imagen de ejemplo */
+    object-fit: cover; 
+    object-position: center;
+    background-color: #000;
+    transition: transform 8s ease-in-out; /* zoom suave */
+}
+
+/* Efecto tipo cinematic */
+.carousel-item.active .img-carrusel {
+    transform: scale(1.08);
+}
+
+/* Bordes redondeados también para botones */
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    filter: invert(1);
+    opacity: 0.8;
+}
+.carousel-control-prev,
+.carousel-control-next {
+    border-radius: 50%;
+}
