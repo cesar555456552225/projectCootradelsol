@@ -10,3 +10,7 @@ def home (request):
 def main(request):
     template=loader.get_template('main.html')
     return HttpResponse(template.render())
+
+def detalle_vehiculos (request):
+    template = loader.get_template('vehiculos.html')
+    return HttpResponse(template.render())
