@@ -13,6 +13,7 @@
     <title>Cootradelsol</title>
 </head>
 <body>
+<!-- Navegador del sitio -->
     <nav>
         <div class="logo-container">
             <img src="{% static 'admin_cosol/img/logo.png' %}" alt="Logo Cootradelsol" class="logo">
@@ -24,5 +25,32 @@
             <ol><a href="#rutas">Nuestras rutas</a></ol>
         </ul>
     </nav>
+    <!-- lista de vehiculos-->
+    <div class="container mt-5">
+        <h2 class="mb-4">Vehículos en venta</h2>
+        <table border="1" class="table table-striped" cellspacing="0" cellpadding="7">
+            <thead>
+                <tr>
+                    <th>Tipo de vehículo</th>
+                    <th>Precio de venta</th>
+                    <th>Marca</th>
+                    <th>Modelo</th>
+                    <th>Capacidad</th>
+                    <th>Descripción</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for vehiculo in Vehiculos %}
+                <tr>
+                    <td>{{ vehiculo.tipo_vehiculo }}</td>
+                    <td>{{ vehiculo.precio }}</td>
+                    <td>{{ vehiculo.marca }}</td>
+                    <td>{{ vehiculo.modelo }}</td>
+                    <td>{{ vehiculo.capacidad }}</td>
+                    <td>{{ vehiculo.descripcion }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
 </body>
 </html>
