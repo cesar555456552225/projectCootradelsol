@@ -1,191 +1,381 @@
 <!DOCTYPE html>
-
 <html lang="es">
 <head>
-    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>Cootradelsol - Cooperativa de Transportadores del Sol</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+    
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <!-- Google Fonts -->
+    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     {% load static %}
     <link rel="stylesheet" href="{% static 'admin_cosol/css/home.css' %}">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    
 
-    <title>Cootradelsol</title>
 </head>
 <body>
-    <nav>
-        <div class="logo-container">
-            <img src="{% static 'admin_cosol/img/logo.png' %}" alt="Logo Cootradelsol" class="logo">
-            <h1 class='cootra'><em>Cootradelsol</em></h1>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <img src="{% static 'admin_cosol/img/logo.png' %}" alt="Logo Cootradelsol" width="60">
+                <span>Cootradelsol</span>
+            </a>
+            <ul class="navbar-nav d-flex flex-row gap-3">
+                <li class="nav-item">
+                    <a class="nav-link" href="#nosotros">Nosotros</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#servicios">Nuestros Servicios</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#rutas">Nuestras Rutas</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="vehiculos/">Ventas</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="login/">Entrar</a>
+                </li>
+            </ul>
         </div>
-        <ul class="lista-nav">
-            <ol><a href="#nosotros">Nosotros</a></ol>
-            <ol><a href="#servicios">Nuestros servicios</a></ol>
-            <ol><a href="#rutas">Nuestras rutas</a></ol>
-        </ul>
     </nav>
 
-    <div class="hero-section">
-        <h1>Bienvenido a la cooperativa de transportadores del sol <br>"Cootradelsol"</h1>
-    </div>
-<!--Div para carrusel de imagenes-->
-    <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
-        <div class="carousel-inner">
-            <div class="carousel-item active">
-                <img src="{% static 'admin_cosol/img/petrobras.png' %}" alt="Imagen de petrobras" class="img-carrusel">
-            </div>
-            <div class="carousel-item activate">
-                <img src="{% static 'admin_cosol/img/aquitania.jpg' %}" alt="Parque principal de Aquitania" class="img-carrusel">
-            </div>
-            <div class="carousel-item activate">
-                <img src="{% static 'admin_cosol/img/Duitama.jpg' %}" alt="Parque los libertadores-Duitama" class="img-carrusel">
-            </div>
-            <div class="carousel-item activate">
-                <img src="{% static 'admin_cosol/img/tunja.jpg' %}" alt="Parque bolivar-tunja" class="img-carrusel">
-            </div>
+    <!-- Hero Section -->
+    <section class="hero" style="margin-top: 76px;">
+        <div class="container" data-aos="fade-up">
+            <h1>Cooperativa de Transportadores del Sol "Cootradelsol"</h1>
+            <p>¡Viaja seguro, viaja con confianza!</p>
         </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Anterior</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Siguiente</span>
-        </button>
-    </div> <!--Fin del div para el carrusel de fondos-->
-<!--Info de la empresa-->
-    <div id="nosotros">
-        <h1 class="section-title">Nosotros</h1>
-        <div class="linea"></div>
-        <div class="e">
-            <section class="card">
-                <h2 class="card-title">Misión</h2>
-                <p class="card-text">Ofrecer un óptimo servicio de transporte de pasajeros, en todo tipo de vehículos
-                    con radio de accion municipal y nacional, a fin de satisfacer las necesidades y 
-                    requerimientos del publico en general; orientando a cumplir con los estandares 
-                    y reglamentaciones de seguridad, cumplimiento y calidad.
-                </p>
-            </section>
-            <section class="card">
-                <h2 class="card-title">Visión</h2>
-                <p class="card-text">Posicionar a la cooperativa de transportadores del sol "COOTRADELSOL" como lider
-                    en el cumplimiento de las rutas y servicios que posea; asi mismo que pueda incursionar
-                    en rutas adicionales a nivel municipal y nacional, adicionando servicios especiales y de carga. 
-                </p>
-            </section>
-        </div>
-    </div>
-<!--Servicios de la empresa-->
-    <div id="servicios">
-        <h1 class="section-title">Nuestros servicios</h1>
-        <div class="linea"></div>
-        <div class="servicios">
-            <section class="card" style="width: 18rem;">
-                <h3>Servicio de Microbus urbano</h3>
-                <p class="card-text">En cootradelsol contamos con el servicio de microbus urbano en la ciudad de sogamoso, teniendo en cuenta
-                    las necesidades de Nuestros usuarios.
-                </p>
-                <img src="{% static 'admin_cosol/img/Microbus.png' %}" alt="mircrobus urbano" class="card-img-top">
-            </section>
-            <section class="card" style="width: 18rem;">
-                <h3>Servicio intermunicipal</h3>
-                <p class="card-text">En cootradelsol te ofrecemos servicio intermunicipal con despachos para Aquitania, Duitama y Tunja.</p>
-                <img src="{% static 'admin_cosol/img/intermunicipales.jpg' %}" alt="bus intermunicipal" class="card-img-top">
-            </section>
-            <section class="card" style="width: 18rem;">
-                <h3>Servicio de taxi</h3>
-                <p class="card-text">Nuestro servicio de taxis cuenta con app, para que los usuarios puedadn solicitar
-                    el servicio de taxis desde donde se encuentren.
-                </p>
-                <img src="{% static 'admin_cosol/img/taxi.png' %}" alt="taxi" class="card-img-top">
-            </section>
-        </div>
-    </div>
-<!--Rutas de la empresa-->
-    <div id="rutas">
-        <h1 class="section-title">Nuestras rutas</h1>
-        <div class="linea"></div>
-        <div class="rutas">
-            <!--Rutas urbanas-->
-            <h4 class="titulo-ruta">Ruta 1C</h4>
-            <div class="contenedor-rutas">
-                <section class="ruta ruta1c">
-                    <h5 style="color: white;"><strong>Ida</strong></h5>
-                    <ul>
-                        <li>U.P.T.C Cra 18</li>
-                        <li>Terminal</li>
-                        <li>Éxito - 6 de Sept</li>
-                        <li>Iwoka - Uniboyacá</li>
-                        <li>SENA</li>
-                        <li>Colegio<br>Gustavo Jiménez</li>
-                    </ul>
-                </section>
+    </section>
 
-                <section class="ruta ruta1c-2">
-                    <h5 style="color: white;"><strong>Regreso</strong></h5>
-                    <ul>
-                        <li>Laguito</li>
-                        <li>6 de Sept</li>
-                        <li>Carrera 10</li>
-                        <li>P/la villa</li>
-                        <li>Terminal - Cra 18</li>
-                        <li>U.P.T.C</li>
-                    </ul>
-                </section>
+    <!-- Carousel -->
+    <section class="carousel-section">
+        <div class="container">
+            <div id="carouselCootradelsol" class="carousel slide" data-bs-ride="carousel" data-aos="fade-up">
+                <div class="carousel-indicators">
+                    <button type="button" data-bs-target="#carouselCootradelsol" data-bs-slide-to="0" class="active"></button>
+                    <button type="button" data-bs-target="#carouselCootradelsol" data-bs-slide-to="1"></button>
+                    <button type="button" data-bs-target="#carouselCootradelsol" data-bs-slide-to="2"></button>
+                    <button type="button" data-bs-target="#carouselCootradelsol" data-bs-slide-to="3"></button>
+                </div>
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img src="{% static 'admin_cosol/img/PublicidadTaxi4.png' %}" class="d-block w-100" alt="Publicidad taxi">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="{% static 'admin_cosol/img/petrobras.png' %}" class="d-block w-100" alt="Petrobras">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="{% static 'admin_cosol/img/Duitama.jpg' %}" class="d-block w-100" alt="Duitama">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="{% static 'admin_cosol/img/tunja.jpg' %}" class="d-block w-100" alt="Tunja">
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselCootradelsol" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon"></span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselCootradelsol" data-bs-slide="next">
+                    <span class="carousel-control-next-icon"></span>
+                </button>
             </div>
-<!--Rutas intermunicipales-->
-            <h4 class="titulo-ruta" style="margin-top: 60px;">Rutas Intermunicipales</h4>
+        </div>
+    </section>
 
-            <div class="info-intermunicipales">
-                <h5 class="titulo-intermunicipales">Sogamoso - Aquitania</h5>
-                <div class="sogamoso-aquitania">
-                    <img src="{% static 'admin_cosol/img/Aquitania.jpg' %}" alt="Aquitania" class="imagen-destino">
-                    <div class="horarios">
-                        <h6>Horario</h6>
-                        <p>06:45 am - 07:30 am - 08:15 am - 09:00 am - 09:45 am</p>
-                        <p>10:30 am - 11:15 am - 12:00 pm - 12:45 pm - 01:30 pm</p>
-                        <p>02:15 pm - 03:00 pm - 03:45 pm - 04:30 pm - 05:15 pm</p>
-                        <p>06:00 pm - 06:45 pm</p>
+    <!-- Nosotros -->
+    <section id="nosotros" class="nosotros-bg">
+        <div class="container">
+            <div class="section-title" data-aos="fade-up">
+                <h2>Nosotros</h2>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-md-6" data-aos="fade-right">
+                    <div class="mission-vision-card">
+                        <h3>
+                            <i class="bi bi-bullseye"></i>
+                            Misión
+                        </h3>
+                        <p>
+                            Ofrecer un óptimo servicio de transporte de pasajeros, en todo tipo de vehículos
+                            con radio de acción municipal y nacional, cumpliendo los estándares de seguridad,
+                            calidad y normatividad vigente.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="col-md-6" data-aos="fade-left">
+                    <div class="mission-vision-card">
+                        <h3>
+                            <i class="bi bi-eye"></i>
+                            Visión
+                        </h3>
+                        <p>
+                            Posicionar a la cooperativa de transportadores del sol "COOTRADELSOL" como líder
+                            en el cumplimiento de rutas, ampliando servicios municipales y nacionales.
+                        </p>
                     </div>
                 </div>
             </div>
+        </div>
+    </section>
 
-            <div class="info-intermunicipales">
-                <h5 class="titulo-intermunicipales">Sogamoso - Duitama</h5>
-                <img src="{% static 'admin_cosol/img/Duitama.jpg' %}" alt="Duitama" class="imagen-destino">
+    <!-- Servicios -->
+    <section id="servicios">
+        <div class="container">
+            <div class="section-title" data-aos="fade-up">
+                <h2>Nuestros Servicios</h2>
             </div>
-
-            <div class="info-intermunicipales">
-                <h5 class="titulo-intermunicipales">Sogamoso - Tunja</h5>
-                <img src="{% static 'admin_cosol/img/tunja.jpg' %}"alt="Tunja" class="imagen-destino">
+            
+            <div class="row g-4">
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="card">
+                        <img src="{% static 'admin_cosol/img/Microbus.png' %}" class="card-img-top" alt="Microbús urbano">
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                <i class="bi bi-bus-front"></i> Microbús Urbano
+                            </h5>
+                            <p class="card-text">
+                                Servicio de microbús urbano, con 5 rutas establecidas 
+                                para cubrir diferentes sectores de la ciudad de Sogamoso.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="card">
+                        <img src="{% static 'admin_cosol/img/intermunicipales.jpg' %}" class="card-img-top" alt="Intermunicipal">
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                <i class="bi bi-signpost-2"></i> Servicio Intermunicipal
+                            </h5>
+                            <p class="card-text">
+                                En cootradelsol ofrecemos rutas intermunicipales con comodos
+                                vehiculos para viajar a destinos como Aquitania, Tunja y Duitama.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="card">
+                        <img src="{% static 'admin_cosol/img/taxi.png' %}" class="card-img-top" alt="Taxi">
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                <i class="bi bi-taxi-front"></i> Servicio de Taxi
+                            </h5>
+                            <p class="card-text">
+                                Contamos con servicio de taxi las 24 horas del día, con un amplio parque
+                                automotor para asi poder garantizar un servicio rapido y seguro a nuestros usuarios.
+                            </p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-<!--Footer de la pagina-->
-    <footer>
-        <section class="section-1-footer">
-            <img src="{% static 'admin_cosol/img/logo.png' %}" alt="logo cootradelsol" class="logo">
-            <h3 class="footer-title"><em>Cootradelsol</em></h3>
-            <p>Cooperativa de transportadores del sol</p>
-            <p>Nit: 891855325-0</p>
-            <div class="redes-footer">
-                <a href="https://www.facebook.com/cootradelsol">
-                    <img src="{% static 'admin_cosol/img/facebook.png' %}" alt="facebook" width="30">
-                </a>
-                <a href="https://www.instagram.com/">
-                    <img src="{% static 'admin_cosol/img/instagram.png' %}" alt="instagram" width="32">
-                </a>
-            </div>
-        </section>
+    </section>
 
-        <section class="section-2-footer">
-            <h6>Radiotaxi</h6>
-            <p>318 155 5555 - 315 955 5555<br>310 200 2222 - 324 727 2222</p>
-            <img src="{% static 'admin_cosol/img/whatsapp.png' %}" alt="whatsapp" width="30">
-            <p>313 485 3879</p>
-            <h6>Dirección</h6>
-            <p>Carrera 12 N° 46-86<br>Sogamoso - Boyacá</p>
-        </section>
+    <!-- Rutas -->
+    <section id="rutas" style="background: #f8f9fa;">
+        <div class="container">
+            <div class="section-title" data-aos="fade-up">
+                <h2>Nuestras Rutas</h2>
+            </div>
+            
+            <div class="row mb-5">
+                <div class="col-12" data-aos="fade-up">
+                    <div class="rutas-list">
+                        <h3 class="text-center mb-4" style="color: var(--secondary-color);">
+                            <i class="bi bi-map"></i> Rutas Urbanas
+                        </h3>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <ul>
+                                    <li><strong>Ruta 1C:</strong> Asodea - Barrio Oriente - Monquirá</li>
+                                    <li><strong>Ruta 2C:</strong> Abuelo Próspero - Laguito</li>
+                                    <li><strong>Ruta 3C:</strong> Magdalena - La Liberia</li>
+                                    <li><strong>Ruta 4C:</strong> Asodea - Prado Norte</li>
+                                </ul>
+                            </div>
+                            <div class="col-md-6">
+                                <ul>
+                                    <li><strong>Ruta 5C:</strong> Callejuelas - Oasis - Coliseo</li>
+                                    <li><strong>Ruta 6C:</strong> Abuelo Próspero - Gustavo Jiménez</li>
+                                    <li><strong>Ruta 7C:</strong> Libertador - Laguito</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <h3 class="text-center mb-4" style="color: var(--secondary-color);" data-aos="fade-up">
+                <i class="bi bi-signpost-split"></i> Rutas Intermunicipales
+            </h3>
+            
+            <div class="row g-4">
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="route-card">
+                        <img src="{% static 'admin_cosol/img/Aquitania.jpg' %}" alt="Aquitania">
+                        <h4 style="color: var(--secondary-color);">Sogamoso - Aquitania</h4>
+                    </div>
+                </div>
+                
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="route-card">
+                        <img src="{% static 'admin_cosol/img/Duitama.jpg' %}" alt="Duitama">
+                        <h4 style="color: var(--secondary-color);">Sogamoso - Duitama</h4>
+                    </div>
+                </div>
+                
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="route-card">
+                        <img src="{% static 'admin_cosol/img/tunja.jpg' %}" alt="Tunja">
+                        <h4 style="color: var(--secondary-color);">Sogamoso - Tunja</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section" data-aos="zoom-in">
+        <div class="container">
+            <h2 style="color: var(--secondary-color); margin-bottom: 2rem;">¿Quieres formar parte de nuestra familia?</h2>
+            <a href="asociados/" class="cta-btn">
+                <i class="bi bi-people-fill"></i> Sé parte de nuestra cooperativa
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contacto">
+        <div class="container">
+            <div class="footer-content">
+                <!-- Logo y descripción -->
+                <div class="footer-section" data-aos="fade-up">
+                    <div class="footer-logo">
+                        <img src="{% static 'admin_cosol/img/logo.png' %}" alt="Logo" width="60">
+                        <div>
+                            <h4>Cootradelsol</h4>
+                            <p>Cooperativa de transportadores del sol</p>
+                        </div>
+                    </div>
+                    <p><strong>NIT:</strong> 891855325-0</p>
+                    <div class="social-icons">
+                        <a href="https://www.facebook.com/cootradelsol"><i class="bi bi-facebook"></i></a>
+                        <a href="https://www.instagram.com/cootradelsol?igsh=Y2lwbms3dzl0MXoz"><i class="bi bi-instagram"></i></a>
+                    </div>
+                </div>
+                
+                <!-- Radiotaxi -->
+                <div class="footer-section" data-aos="fade-up" data-aos-delay="100">
+                    <h4><i class="bi bi-telephone"></i> Radiotaxi</h4>
+                    <p><i class="bi bi-phone"></i> 318 155 5555</p>
+                    <p><i class="bi bi-phone"></i> 315 955 5555</p>
+                    <p><i class="bi bi-phone"></i> 310 200 2222</p>
+                    <p><i class="bi bi-phone"></i> 324 727 2222</p>
+                    <p><i class="bi bi-whatsapp"></i> WhatsApp: 313 485 3879</p>
+                </div>
+                
+                <!-- Dirección -->
+                <div class="footer-section" data-aos="fade-up" data-aos-delay="200">
+                    <h4><i class="bi bi-geo-alt"></i> Dirección</h4>
+                    <p>Carrera 12 N° 46-86<br>Sogamoso - Boyacá<br>Colombia</p>
+                    <h4 class="mt-4"><i class="bi bi-envelope"></i> Email</h4>
+                    <p>secretaria@cootradelsol.com</p>
+                </div>
+                
+                <!-- Enlaces rápidos -->
+                <div class="footer-section" data-aos="fade-up" data-aos-delay="300">
+                    <h4><i class="bi bi-link-45deg"></i> Enlaces Rápidos</h4>
+                    <p><a href="#nosotros">Nosotros</a></p>
+                    <p><a href="#servicios">Servicios</a></p>
+                    <p><a href="#rutas">Rutas</a></p>
+                    <p><a href="#">Términos y Condiciones</a></p>
+                    <p><a href="#">Política de Privacidad</a></p>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2026 Cootradelsol. Todos los derechos reservados.</p>
+                <p>¡Viaja seguro, viaja con confianza! <i class="bi bi-heart-fill" style="color: var(--primary-color);"></i></p>
+            </div>
+        </div>
     </footer>
+
+
+    <div class="scroll-top" id="scrollTop">
+        <i class="bi bi-arrow-up"></i>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    
+    <script>
+        
+        AOS.init({
+            duration: 1000,
+            once: true,
+            offset: 100
+        });
+        
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+        
+        // Scroll to top button
+        const scrollTopBtn = document.getElementById('scrollTop');
+        
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 300) {
+                scrollTopBtn.classList.add('active');
+            } else {
+                scrollTopBtn.classList.remove('active');
+            }
+        });
+        
+        scrollTopBtn.addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const offsetTop = target.offsetTop - 80;
+                    window.scrollTo({
+                        top: offsetTop,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
 </body>
 </html>
