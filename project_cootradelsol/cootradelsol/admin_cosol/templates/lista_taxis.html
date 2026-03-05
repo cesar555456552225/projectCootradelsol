@@ -1,0 +1,28 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de taxis</title>
+</head>
+<body>
+    <h1>Lista de taxis</h1>
+    <table border="1">
+        <tr>
+            <th>Placa</th>
+            <th>Modelo</th>
+            <th>Año</th>
+            <th>Color</th>
+            <th>Conductor</th>
+        </tr>
+        {% for taxi in taxis %}
+        <tr>
+            <td>{{ taxi.placa }}</td>
+            <td>{{ taxi.modelo }}</td>
+            <td>{{ taxi.año }}</td>
+            <td>{{ taxi.color }}</td>
+            <td>{{ taxi.conductor }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

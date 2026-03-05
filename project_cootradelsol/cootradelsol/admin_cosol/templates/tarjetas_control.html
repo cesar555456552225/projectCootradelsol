@@ -1,0 +1,16 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tarjetas de control</title>
+</head>
+<body>
+    <h1>Tarjetas de control</h1>
+    <a href="{% url 'crear_tarjeta_control' %}">Crear nueva tarjeta de control</a>
+    <ul>
+        {% for tarjeta in tarjetas %}
+            <li>{{ tarjeta.numero }} - {{ tarjeta.taxi.placa }} - {{ tarjeta.conductor.nombre }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

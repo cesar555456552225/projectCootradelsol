@@ -44,6 +44,9 @@ class Taxis (models.Model):
     
     def __str__(self):
         return f"{self.numero_interno} - {self.placa}"
+    
+    def taxicosol (self):
+        return f"{self.numero_interno} - {self.placa}"
 
 class Conductores(models.Model):
     nombres = models.CharField(max_length=150)
@@ -60,3 +63,32 @@ class Conductores(models.Model):
     
     def __str__(self):
         return f"{self.nombres} {self.apellidos} - {self.taxi}"
+    
+    def conductorinfo(self):
+        return f"{self.nombres} {self.apellidos} - {self.taxi}"
+
+class TarjetaControls (models.Model):
+    numero_tarjeta = models.CharField(max_length=10)
+    fecha_expedicion = models.DateField(blank=True, null=True)
+    conductor = models.ForeignKey(Conductores, on_delete=models.CASCADE)
+    taxi = models.ForeignKey(Taxis, on_delete=models.CASCADE)
+    refrendada1 = models.DateField(blank=True, null=True, verbose_name="Refrendada 1")
+    vencimientorefrendada1 = models.DateField(blank=True, null=True, verbose_name="vencimiento refrendad 1")
+    refrendada2 = models.DateField(blank=True, null=True, verbose_name="Refrendada 2")
+    vencimientorefrendada2 = models.DateField(blank=True, null=True, verbose_name="vencimiento refrendada 2")
+    refrendada3 = models.DateField(blank=True, null=True, verbose_name="Refrendada 3")
+    vencimientorefrendada3 = models.DateField(blank=True, null=True, verbose_name="vencimiento refrendada 3")
+    refrendada4 = models.DateField(blank=True, null=True, verbose_name="Refrendada 4")
+    vencimientorefrendada4 = models.DateField(blank=True, null=True, verbose_name="vencimiento refrendada 4")
+    refrendada5 = models.DateField(blank=True, null=True, verbose_name="Refrendada 5")
+    vencimientorefrendada5 = models.DateField(blank=True, null=True, verbose_name="vencimiento refrendada 5")
+    refrendada6 = models.DateField(blank=True, null=True, verbose_name="Refrendada 6")
+    vencimientorefrendada6 = models.DateField(blank=True, null=True, verbose_name="vencimiento refrendada 6")
+    refrendada7 = models.DateField(blank=True, null=True, verbose_name="Refrendada 7")
+    vencimientorefrendada7 = models.DateField(blank=True, null=True, verbose_name="vencimiento refrendada 7")
+
+    def __str__(self):
+        return f"{self.numero_tarjeta} - {self.taxi} - {self.conductor}"
+    
+    def tarjeta_info(self):
+        return f"{self.numero_tarjeta} - {self.taxi} - {self.conductor}"

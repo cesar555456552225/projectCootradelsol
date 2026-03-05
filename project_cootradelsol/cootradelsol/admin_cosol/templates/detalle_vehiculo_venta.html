@@ -39,7 +39,7 @@
                     <p><strong>Modelo:</strong> {{ vehiculo.modelo }}</p>
                     <p><strong>Capacidad de ocupantes:</strong> {{ vehiculo.capacidad }} pasajeros</p>
                     <p><strong>Descripción:</strong> {{ vehiculo.descripcion }}</p>
-                    <a href="{% url 'vehiculos' %}" class="btn btn-primary mt-3">Volver</a>
+                    <a href="{% url 'vehiculos_venta' %}" class="btn btn-primary mt-3">Volver</a>
                     {% if user.is_authenticated %}
                     <form action="{% url 'eliminar_vehiculo' vehiculo.id %}" method="POST">
                     {% csrf_token %}

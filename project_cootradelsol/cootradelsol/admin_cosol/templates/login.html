@@ -433,11 +433,41 @@
             </div>
             
             <div class="admin-links">
-                <a href="{% url 'crear_vehiculo' %}" class="admin-btn admin-btn-primary">
+                <a href="{% url 'crear_vehiculo_venta' %}" class="admin-btn admin-btn-primary">
                     <i class="bi bi-plus-circle"></i>
-                    Agregar Vehículos
+                    Agregar Vehículos Para Venta
                 </a>
                 
+                <a href="{% url 'crear_taxi' %}" class="admin-btn admin-btn-primary">
+                    <i class="bi bi-plus-circle"></i>
+                    Crear Vehiculo Tipo Taxi
+                </a>
+                
+                <a href="{% url 'agregar_conductor' %}" class="admin-btn admin-btn-primary">
+                    <i class="bi bi-plus-circle"></i>
+                    Crear Conductor
+                </a>
+                
+                <a href="{% url 'crear_tarjeta_control' %}" class="admin-btn admin-btn-primary">
+                    <i class="bi bi-plus-circle"></i>
+                    Crear una Tarjeta de Control
+                </a>
+
+                <a href="{% url 'lista_taxis' %}" class="admin-btn admin-btn-primary">
+                    <i class="bi bi-plus-circle"></i>
+                    Ver Vehiculos Tipo Taxi
+                </a>
+
+                <a href="{% url 'lista_conductores' %}" class="admin-btn admin-btn-primary">
+                    <i class="bi bi-plus-circle"></i>
+                    Ver Conductores
+                </a>
+
+                <a href="{% url 'lista_tarjeta_control' %}" class="admin-btn admin-btn-primary">
+                    <i class="bi bi-plus-circle"></i>
+                    Ver Tarjetas de Control
+                </a>
+
                 <a href="{% url 'logout' %}" class="admin-btn admin-btn-danger">
                     <i class="bi bi-box-arrow-right"></i>
                     Cerrar Sesión
