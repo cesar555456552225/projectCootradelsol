@@ -1,19 +1,409 @@
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lista de coductores de taxi</title>
+    <title>Lista de conductores - cootradelsol</title>
+        <!-- Bootstrap CSS -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+        <!-- Bootstrap Icons -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
 </head>
+    <style>
+        :root {
+            --primary-color: #FDB913;
+            --secondary-color: #003DA5;
+            --dark-color: #1a1a1a;
+            --light-color: #f8f9fa;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            min-height: 100vh;
+            padding: 2rem 0;
+        }
+        
+        .page-header {
+            background: linear-gradient(135deg, var(--secondary-color) 0%, #0052d4 100%);
+            color: white;
+            padding: 2rem 0;
+            margin-bottom: 3rem;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+        
+        .page-header h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin: 0;
+        }
+        
+        .page-header p {
+            margin: 0.5rem 0 0;
+            opacity: 0.9;
+        }
+        
+        .user-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(255,255,255,0.2);
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            backdrop-filter: blur(10px);
+            margin-top: 1rem;
+        }
+        
+        .user-badge i {
+            font-size: 1.2rem;
+        }
+        
+        .form-container {
+            max-width: 800px;
+            margin: 0 auto;
+            animation: slideUp 0.6s ease-out;
+        }
+        
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .form-card {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+            padding: 3rem;
+            margin-bottom: 2rem;
+        }
+        
+        .form-card-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 3px solid var(--primary-color);
+        }
+        
+        .form-card-header i {
+            font-size: 2.5rem;
+            color: var(--secondary-color);
+        }
+        
+        .form-card-header h2 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--secondary-color);
+            margin: 0;
+        }
+        
+        .form-group {
+            margin-bottom: 2rem;
+        }
+        
+        .form-label {
+            font-weight: 600;
+            color: var(--dark-color);
+            margin-bottom: 0.7rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1rem;
+        }
+        
+        .form-label i {
+            color: var(--secondary-color);
+            font-size: 1.2rem;
+        }
+        
+        .form-label .required {
+            color: #dc3545;
+            margin-left: 0.2rem;
+        }
+        
+        .form-control,
+        .form-select,
+        textarea {
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
+            padding: 0.9rem 1.2rem;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+        
+        .form-control:focus,
+        .form-select:focus,
+        textarea:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 0.25rem rgba(253, 185, 19, 0.25);
+            outline: none;
+        }
+        
+        textarea {
+            resize: vertical;
+            min-height: 120px;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .input-group-custom {
+            position: relative;
+        }
+        
+        .input-group-custom .currency-symbol {
+            position: absolute;
+            left: 1.2rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #666;
+            font-weight: 600;
+            pointer-events: none;
+            z-index: 5;
+        }
+        
+        .input-group-custom input {
+            padding-left: 2.5rem;
+        }
+        
+        .form-help {
+            font-size: 0.85rem;
+            color: #666;
+            margin-top: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+        
+        .form-help i {
+            color: var(--primary-color);
+        }
+        
+        .button-group {
+            display: flex;
+            gap: 1rem;
+            margin-top: 3rem;
+            flex-wrap: wrap;
+        }
+        
+        .btn-save {
+            flex: 1;
+            min-width: 200px;
+            background: linear-gradient(135deg, var(--primary-color) 0%, #ffca28 100%);
+            border: none;
+            color: var(--dark-color);
+            padding: 1rem 2rem;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 20px rgba(253, 185, 19, 0.4);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+        
+        .btn-save:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(253, 185, 19, 0.5);
+        }
+        
+        .btn-save:active {
+            transform: translateY(-1px);
+        }
+        
+        .btn-cancel {
+            flex: 1;
+            min-width: 200px;
+            background: #6c757d;
+            border: none;
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            box-shadow: 0 5px 20px rgba(108, 117, 125, 0.3);
+        }
+        
+        .btn-cancel:hover {
+            background: #5a6268;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(108, 117, 125, 0.4);
+            color: white;
+        }
+        
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--secondary-color);
+            text-decoration: none;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            padding: 0.7rem 1.3rem;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+        }
+        
+        .back-link:hover {
+            transform: translateX(-5px);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.12);
+            color: var(--secondary-color);
+        }
+        
+        .success-message {
+            background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+            color: white;
+            padding: 1.2rem 1.5rem;
+            border-radius: 12px;
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            box-shadow: 0 5px 20px rgba(40, 167, 69, 0.3);
+            animation: slideDown 0.5s ease-out;
+        }
+        
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .custom-table {
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+}
+
+.custom-table thead {
+    background: linear-gradient(135deg, #003DA5, #0052d4);
+    color: white;
+}
+
+.custom-table thead th {
+    border: none;
+    padding: 15px;
+    font-weight: 600;
+}
+
+.custom-table tbody td {
+    padding: 15px;
+    border-top: 1px solid #f1f1f1;
+}
+
+.custom-table tbody tr {
+    transition: all 0.2s ease;
+}
+
+.custom-table tbody tr:hover {
+    background-color: #f8f9fa;
+    transform: scale(1.01);
+}
+
+.badge {
+    padding: 6px 10px;
+    font-size: 0.8rem;
+    border-radius: 8px;
+}
+
+    </style>
 <body>
-    <h1>Lista de conductores de taxi</h1>
-    <table>
-        <tr>
-            <th>Nombre</th>
-            <th>Apellido</th>
-            <th>Documento de identidad</th>
-            <th>Licencia de conducir</th>
-        </tr>
-        <!-- Aquí se agregarían las filas con los datos de los conductores -->
+        <!-- Header -->
+    <div class="page-header">
+        <div class="container">
+            <div class="d-flex justify-content-between align-items-center flex-wrap gap-3">
+                <div>
+                    <h1><i class="bi bi-person-square"></i> Lista De Conductores Activos</h1>
+                    <p>Panel Administrativo - Cootradelsol</p>
+                </div>
+                {% if user.is_authenticated %}
+                <div class="user-badge">
+                    <i class="bi bi-person-circle"></i>
+                    <span>{{ user.username }}</span>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+{{ form.errors }}
+    <div class="container">
+        <div class="form-container">
+            
+            <!-- Back Link -->
+            <a href="{% url 'login' %}" class="back-link">
+                <i class="bi bi-arrow-left"></i>
+                Volver al panel
+            </a>
+    </div>
+
+    <!-- Tabla moderna -->
+<div class="table-responsive">
+    <table class="table table-hover align-middle custom-table">
+        <thead>
+            <tr>
+                <th>Numero identificación</th>
+                <th>Nombres</th>
+                <th>Apellidos</th>
+                <th>RH</th>
+                <th>Dirección</th>
+                <th>Telefono</th>
+                <th>Eps</th>
+                <th>Arl</th>
+                <th>Anotaciones</th>
+                <th>Taxi que conduce</th>
+                <th>Detalles</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for conductor in conductores %}
+            <tr>
+                <td><span class="badge bg-dark">{{ conductor.numero_identificacion }}</span></td>
+                <td class="fw-bold text-primary">{{ conductor.nombres }}</td>
+                <td>{{ conductor.apellidos }}</td>
+                <td>{{ conductor.rh }}</td>
+                <td>
+                    {{ conductor.direccion }}
+                </td>
+                <td>{{ conductor.telefono }}</td>
+                <td>{{ conductor.eps }}</td>
+                <td>{{ conductor.arl }}</td>
+                <td>{{ conductor.anotaciones }}</td>
+                <td>
+                    <span class="badge bg-warning text-dark">{{ conductor.taxi }}</span>
+                </td>
+                <td><a href=""></a>Ver Conductor</td>
+                
+            </tr>
+            {% endfor %}
+        </tbody>
     </table>
+</div>
 </body>
 </html>

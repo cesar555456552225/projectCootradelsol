@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse
 from django.template import loader
-from .models import Vehiculos
+from .models import Vehiculos, Taxis, Conductores, TarjetaControls
 from .forms import VehiculoForm, ConductorForm, TaxiForm, TarjetaControlForm
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
@@ -74,15 +74,14 @@ def eliminar_vehiculo(request, id):
     return redirect('vehiculos_venta')
 
 def asociados(request):
-    template = loader.get_template('asociados.html')
-    return HttpResponse(template.render())
+    return render(request, 'asociados.html')
 
 def agregar_conductor(request):
     if request.method == 'POST':
         form = ConductorForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
-            return redirect('conductores')
+            return redirect('lista_conductores')
         else:
             form = ConductorForm()
         return render (request, 'agregar_conductor.html', {'form':form})
@@ -93,7 +92,7 @@ def crear_taxi(request):
         form = TaxiForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
-            return redirect('taxis')
+            return redirect('lista_taxis')
         else:
             form = TaxiForm()
         return render(request, 'crear_taxi.html', {'form':form})
@@ -104,20 +103,20 @@ def crear_tarjeta_control(request):
         form = TarjetaControlForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
-            return redirect('tarjeta_controls')
+            return redirect('tarjeta_control')
         else:
             form = TarjetaControlForm()
             return render(request, 'crear_tarjeta_control.html', {'form':form})
     return render(request, 'crear_tarjeta_control.html', {'form': TarjetaControlForm()})
 
 def lista_taxis(request):
-    template = loader.get_template('lista_taxis.html')
-    return HttpResponse(template.render())
+    taxis = Taxis.objects.all()
+    return render(request, 'lista_taxis.html', {'taxis':taxis})
 
 def lista_conductores(request):
-    template = loader.get_template('lista_conductores.html')
-    return HttpResponse(template.render())
+    conductores = Conductores.objects.all()
+    return render(request, 'lista_conductores.html', {'conductores': conductores})
 
 def lista_tarjeta_control(request):
-    template = loader.get_template('tarjetas_control.html')
-    return HttpResponse(template.render())
+    tarjetas_control = TarjetaControls.objects.all()
+    return render(request, 'tarjetas_control.html', {'tarjetas_control': tarjetas_control})
