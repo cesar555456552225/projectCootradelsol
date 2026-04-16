@@ -15,20 +15,25 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 {% load static %}
     <style>
-:root {
-    --primary: #FDB913;
-    --secondary: #003DA5;
-    --bg: #f5f7fb;
-}
-
-body {
-    font-family: 'Poppins', sans-serif;
-    margin: 0;
-    background: var(--bg);
-}
-
-
-/* Navbar */
+        :root {
+            --primary-color: #FDB913;
+            --secondary-color: #003DA5;
+            --dark-color: #1a1a1a;
+            --light-color: #f8f9fa;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            overflow-x: hidden;
+        }
+        
+        /* Navbar */
         .navbar {
             background: linear-gradient(135deg, var(--secondary-color) 0%, #0052d4 100%);
             padding: 1rem 0;
@@ -92,91 +97,15 @@ body {
         .nav-link:hover::after {
             width: 80%;
         }
-/* HERO */
-.hero {
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    background: linear-gradient(135deg, #003DA5, #0052d4);
-    color: white;
-    text-align: center;
-}
-
-.hero h1 {
-    font-size: 3rem;
-    font-weight: 700;
-}
-
-.hero span {
-    color: var(--primary);
-}
-
-.hero p {
-    opacity: .85;
-    margin-top: 10px;
-}
-
-.btn-main {
-    display: inline-block;
-    margin-top: 20px;
-    background: var(--primary);
-    color: black;
-    padding: 10px 25px;
-    border-radius: 50px;
-    text-decoration: none;
-    font-weight: 600;
-    transition: .3s;
-}
-
-.btn-main:hover {
-    transform: translateY(-3px);
-}
-
-/* REQUISITOS */
-.requisitos {
-    padding: 100px 0;
-}
-
-.grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 25px;
-}
-
-/* CARD */
-.card {
-    background: white;
-    padding: 30px;
-    border-radius: 15px;
-    text-align: center;
-    box-shadow: 0 10px 30px rgba(0,0,0,.05);
-    transition: .3s;
-}
-
-.card:hover {
-    transform: translateY(-10px);
-}
-
-.card i {
-    font-size: 2rem;
-    color: var(--secondary);
-    margin-bottom: 15px;
-}
-
-/* CTA */
-.cta {
-    background: var(--secondary);
-    color: white;
-    padding: 80px 0;
-}
+        
     </style>
 </head>
 <body>
 
-<!-- NAV (NO TOCAR) -->
-<nav class="navbar navbar-dark fixed-top">
+<!-- Navbar -->
+    <nav class="navbar navbar-dark fixed-top">
         <div class="container">
-            <a class="navbar-brand" href="/">
+            <a class="navbar-brand" href="#">
                 <img src="{% static 'admin_cosol/img/logo.png' %}" alt="Logo Cootradelsol" width="60">
                 <span>Cootradelsol</span>
             </a>
@@ -193,46 +122,60 @@ body {
                 <li class="nav-item">
                     <a class="nav-link" href="vehiculos_venta/">Ventas</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="login/">Entrar</a>
-                </li>
             </ul>
         </div>
     </nav>
 
-<!-- REQUISITOS -->
-<section id="requisitos" class="requisitos">
-    <div class="container">
-
+<!-- Título -->
         <div class="text-center mb-5">
-            <h2>Requisitos</h2>
-            <p>Estos son los pasos para convertirte en asociado</p>
+            <h2 class="fw-bold">Requisitos</h2>
+            <p class="text-muted">Estos son los pasos para convertirte en asociado</p>
         </div>
 
-        <div class="grid">
+        <!-- Tarjetas -->
+        <div class="row g-4">
 
-            <div class="card">
-                <i class="bi bi-person-check"></i>
-                <h5>Mayor de edad</h5>
-                <p>Debes ser mayor de 18 años con capacidad legal.</p>
+            <!-- Card 1 -->
+            <div class="col-md-4">
+                <div class="card border-0 shadow-sm h-100 text-center p-4">
+                    <div class="mb-3">
+                        <i class="bi bi-person-check display-4 text-primary"></i>
+                    </div>
+                    <h5 class="fw-bold">Mayor de edad</h5>
+                    <p class="text-muted">
+                        Debes ser mayor de 18 años con capacidad legal.
+                    </p>
+                </div>
             </div>
 
-            <div class="card">
-                <i class="bi bi-file-earmark-text"></i>
-                <h5>Carta de solicitud</h5>
-                <p>Solicitud formal dirigida al consejo administrativo.</p>
+            <!-- Card 2 -->
+            <div class="col-md-4">
+                <div class="card border-0 shadow-sm h-100 text-center p-4">
+                    <div class="mb-3">
+                        <i class="bi bi-file-earmark-text display-4 text-success"></i>
+                    </div>
+                    <h5 class="fw-bold">Carta de solicitud</h5>
+                    <p class="text-muted">
+                        Solicitud formal dirigida al consejo administrativo.
+                    </p>
+                </div>
             </div>
 
-            <div class="card">
-                <i class="bi bi-shield-check"></i>
-                <h5>Paz y salvo</h5>
-                <p>Documento de la empresa anterior si aplica.</p>
+            <!-- Card 3 -->
+            <div class="col-md-4">
+                <div class="card border-0 shadow-sm h-100 text-center p-4">
+                    <div class="mb-3">
+                        <i class="bi bi-shield-check display-4 text-danger"></i>
+                    </div>
+                    <h5 class="fw-bold">Paz y salvo</h5>
+                    <p class="text-muted">
+                        Documento de la empresa anterior si aplica.
+                    </p>
+                </div>
             </div>
 
         </div>
-
     </div>
 </section>
-
 </body>
 </html>
