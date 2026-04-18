@@ -18,4 +18,16 @@ urlpatterns = [
     path('lista_taxis/', views.lista_taxis, name='lista_taxis'),
     path('lista_conductores/', views.lista_conductores, name='lista_conductores'),
     path('lista_tarjeta_control/', views.lista_tarjeta_control, name='lista_tarjeta_control'),
+
+    # TAXIS
+path('detalle_taxi/<int:id>/', views.detalle_taxi, name='detalle_taxi'),
+path('editar_taxi/<int:id>/', views.editar_taxi, name='editar_taxi'),
+
+# CONDUCTORES
+path('detalle_conductor/<int:id>/', views.detalle_conductor, name='detalle_conductor'),
+path('editar_conductor/<int:id>/', views.editar_conductor, name='editar_conductor'),
+
+# TARJETAS
+path('detalle_tarjeta/<int:id>/', views.detalle_tarjeta, name='detalle_tarjeta'),
+path('editar_tarjeta/<int:id>/', views.editar_tarjeta, name='editar_tarjeta'),
 ]

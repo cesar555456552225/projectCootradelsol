@@ -1,0 +1,103 @@
+
+{% block title %}Tarjeta de control — {{ tarjeta.numero_tarjeta }}{% endblock %}
+
+
+<div style="max-width: 860px; margin: 2rem auto; padding: 0 1rem;">
+
+  <a href="{% url 'lista_tarjeta_control' %}" style="font-size: 13px; color: var(--color-text-secondary); text-decoration: none; display: inline-flex; align-items: center; gap: 6px; margin-bottom: 1.5rem;">
+    ← Volver a tarjetas
+  </a>
+
+  {% comment %} Encabezado {% endcomment %}
+  <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 1.5rem;">
+    <div style="width: 60px; height: 60px; border-radius: var(--border-radius-lg); background: #EEEDFE; display: flex; align-items: center; justify-content: center; font-size: 26px; flex-shrink: 0;">
+      🪪
+    </div>
+    <div>
+      <h1 style="margin: 0; font-size: 22px; font-weight: 500; color: var(--color-text-primary);">
+        Tarjeta {{ tarjeta.numero_tarjeta }}
+      </h1>
+      <p style="margin: 4px 0 0; font-size: 14px; color: var(--color-text-secondary);">
+        Expedición: {% if tarjeta.fecha_expedicion %}{{ tarjeta.fecha_expedicion|date:"d/m/Y" }}{% else %}—{% endif %}
+      </p>
+    </div>
+    <div style="margin-left: auto; display: flex; gap: 8px;">
+      <a href=""
+         style="font-size: 13px; padding: 6px 14px; border: 0.5px solid var(--color-border-secondary); border-radius: var(--border-radius-md); text-decoration: none; color: var(--color-text-primary);">
+        Editar
+      </a>
+    </div>
+  </div>
+
+  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+
+    {% comment %} Conductor {% endcomment %}
+    <div style="background: var(--color-background-primary); border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-lg); padding: 1rem 1.25rem;">
+      <p style="font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--color-text-tertiary); margin: 0 0 12px;">Conductor</p>
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <div style="width: 36px; height: 36px; border-radius: 50%; background: #B5D4F4; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 500; color: #0C447C; flex-shrink: 0;">
+          {{ tarjeta.conductor.nombres|slice:":1" }}{{ tarjeta.conductor.apellidos|slice:":1" }}
+        </div>
+        <div>
+          <p style="margin: 0; font-size: 14px; font-weight: 500; color: var(--color-text-primary);">{{ tarjeta.conductor.nombres }} {{ tarjeta.conductor.apellidos }}</p>
+          <p style="margin: 2px 0 0; font-size: 12px; color: var(--color-text-secondary);">CC {{ tarjeta.conductor.numero_identificacion }}</p>
+        </div>
+        <a href="" style="margin-left: auto; font-size: 12px; color: var(--color-text-secondary); text-decoration: none;">Ver →</a>
+      </div>
+    </div>
+
+    {% comment %} Taxi {% endcomment %}
+    <div style="background: var(--color-background-primary); border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-lg); padding: 1rem 1.25rem;">
+      <p style="font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--color-text-tertiary); margin: 0 0 12px;">Taxi</p>
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <div style="width: 36px; height: 36px; border-radius: var(--border-radius-md); background: #E1F5EE; display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0;">🚕</div>
+        <div>
+          <p style="margin: 0; font-size: 14px; font-weight: 500; color: var(--color-text-primary);">N° {{ tarjeta.taxi.numero_interno }} — {{ tarjeta.taxi.placa }}</p>
+          <p style="margin: 2px 0 0; font-size: 12px; color: var(--color-text-secondary);">{{ tarjeta.taxi.marca }} {{ tarjeta.taxi.modelo }}</p>
+        </div>
+        <a href="" style="margin-left: auto; font-size: 12px; color: var(--color-text-secondary); text-decoration: none;">Ver →</a>
+      </div>
+    </div>
+
+    {% comment %} Refrendaciones {% endcomment %}
+    <div style="background: var(--color-background-primary); border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-lg); padding: 1rem 1.25rem; grid-column: 1 / -1;">
+      <p style="font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--color-text-tertiary); margin: 0 0 12px;">Refrendaciones</p>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px;">
+
+        {% for i in "1234567" %}
+        {% with num=forloop.counter %}
+
+          {% comment %} Acceso dinámico a campos refrendada1..7 y vencimientorefrendada1..7 {% endcomment %}
+          
+
+          <div style="padding: 10px 12px; background: var(--color-background-secondary); border-radius: var(--border-radius-md); border: 0.5px solid var(--color-border-tertiary);">
+            <p style="font-size: 11px; color: var(--color-text-tertiary); margin: 0 0 6px; font-weight: 500;">Refrendada {{ num }}</p>
+
+            <div style="display: flex; justify-content: space-between; font-size: 12px; margin-bottom: 3px;">
+              <span style="color: var(--color-text-secondary);">Expedición</span>
+              {% if ref_date %}
+                <span style="color: var(--color-text-primary);">{{ ref_date|date:"d/m/Y" }}</span>
+              {% else %}
+                <span style="color: var(--color-text-tertiary);">—</span>
+              {% endif %}
+            </div>
+
+            <div style="display: flex; justify-content: space-between; font-size: 12px; align-items: center;">
+              <span style="color: var(--color-text-secondary);">Vencimiento</span>
+              {% if venc_date %}
+                {% now "Y-m-d" as today %}
+                {% if venc_date|date:"Y-m-d" < today %}
+                  <span style="font-size: 11px; background: #FCEBEB; color: #A32D2D; padding: 2px 8px; border-radius: var(--border-radius-md);">{{ venc_date|date:"d/m/Y" }}</span>
+                {% else %}
+                  <span style="font-size: 11px; background: #EAF3DE; color: #3B6D11; padding: 2px 8px; border-radius: var(--border-radius-md);">{{ venc_date|date:"d/m/Y" }}</span>
+                {% endif %}
+              {% else %}
+                <span style="color: var(--color-text-tertiary);">—</span>
+              {% endif %}
+            </div>
+
+          </div>
+          {% endwith %}
+
+        {% endfor %}

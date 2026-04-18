@@ -1,0 +1,110 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+{% block title %}Conductor — {{ conductor.nombres }} {{ conductor.apellidos }}{% endblock %}
+
+{% block content %}
+<div style="max-width: 860px; margin: 2rem auto; padding: 0 1rem;">
+
+  <a href="{% url 'lista_conductores' %}" style="font-size: 13px; color: var(--color-text-secondary); text-decoration: none; display: inline-flex; align-items: center; gap: 6px; margin-bottom: 1.5rem;">
+    ← Volver a conductores
+  </a>
+
+  {% comment %} Encabezado {% endcomment %}
+  <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 1.5rem;">
+    {% if conductor.imagen %}
+      <img src="{{ conductor.imagen.url }}" alt="Foto de {{ conductor.nombres }}"
+           style="width: 72px; height: 72px; border-radius: 50%; object-fit: cover; border: 0.5px solid var(--color-border-tertiary);">
+    {% else %}
+      <div style="width: 72px; height: 72px; border-radius: 50%; background: #B5D4F4; display: flex; align-items: center; justify-content: center; font-weight: 500; font-size: 22px; color: #0C447C; flex-shrink: 0;">
+        {{ conductor.nombres|slice:":1" }}{{ conductor.apellidos|slice:":1" }}
+      </div>
+    {% endif %}
+    <div>
+      <h1 style="margin: 0; font-size: 22px; font-weight: 500; color: var(--color-text-primary);">
+        {{ conductor.nombres }} {{ conductor.apellidos }}
+      </h1>
+      <p style="margin: 4px 0 0; font-size: 14px; color: var(--color-text-secondary);">
+        CC {{ conductor.numero_identificacion }} &nbsp;·&nbsp; RH {{ conductor.rh }}
+      </p>
+    </div>
+    <div style="margin-left: auto; display: flex; gap: 8px;">
+      <a href=""
+         style="font-size: 13px; padding: 6px 14px; border: 0.5px solid var(--color-border-secondary); border-radius: var(--border-radius-md); text-decoration: none; color: var(--color-text-primary);">
+        Editar
+      </a>
+    </div>
+  </div>
+
+  {% comment %} Grid de tarjetas {% endcomment %}
+  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+
+    {% comment %} Información personal {% endcomment %}
+    <div style="background: var(--color-background-primary); border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-lg); padding: 1rem 1.25rem; grid-column: 1 / -1;">
+      <p style="font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--color-text-tertiary); margin: 0 0 12px;">Información personal</p>
+      <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px;">
+        <div>
+          <p style="font-size: 12px; color: var(--color-text-secondary); margin: 0 0 2px;">Dirección</p>
+          <p style="font-size: 14px; color: var(--color-text-primary); margin: 0;">{{ conductor.direccion }}</p>
+        </div>
+        <div>
+          <p style="font-size: 12px; color: var(--color-text-secondary); margin: 0 0 2px;">Teléfono</p>
+          <p style="font-size: 14px; color: var(--color-text-primary); margin: 0;">{{ conductor.telefono }}</p>
+        </div>
+        <div>
+          <p style="font-size: 12px; color: var(--color-text-secondary); margin: 0 0 2px;">Grupo sanguíneo</p>
+          <p style="font-size: 14px; font-weight: 500; color: var(--color-text-primary); margin: 0;">{{ conductor.rh }}</p>
+        </div>
+      </div>
+    </div>
+
+    {% comment %} Seguridad social {% endcomment %}
+    <div style="background: var(--color-background-primary); border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-lg); padding: 1rem 1.25rem;">
+      <p style="font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--color-text-tertiary); margin: 0 0 12px;">Seguridad social</p>
+      <table style="width: 100%; font-size: 13px; border-collapse: collapse;">
+        <tr>
+          <td style="color: var(--color-text-secondary); padding: 5px 0; border-bottom: 0.5px solid var(--color-border-tertiary);">EPS</td>
+          <td style="text-align: right; padding: 5px 0; border-bottom: 0.5px solid var(--color-border-tertiary); color: var(--color-text-primary);">{{ conductor.eps }}</td>
+        </tr>
+        <tr>
+          <td style="color: var(--color-text-secondary); padding: 5px 0;">ARL</td>
+          <td style="text-align: right; padding: 5px 0; color: var(--color-text-primary);">{{ conductor.arl }}</td>
+        </tr>
+      </table>
+    </div>
+
+    {% comment %} Taxi asignado {% endcomment %}
+    <div style="background: var(--color-background-primary); border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-lg); padding: 1rem 1.25rem;">
+      <p style="font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--color-text-tertiary); margin: 0 0 12px;">Taxi asignado</p>
+      <div style="display: flex; align-items: center; gap: 12px;">
+        <div style="width: 40px; height: 40px; border-radius: var(--border-radius-md); background: #E1F5EE; display: flex; align-items: center; justify-content: center; font-size: 18px;">🚕</div>
+        <div>
+          <p style="margin: 0; font-size: 15px; font-weight: 500; color: var(--color-text-primary);">
+            N° {{ conductor.taxi.numero_interno }} — {{ conductor.taxi.placa }}
+          </p>
+          <p style="margin: 2px 0 0; font-size: 13px; color: var(--color-text-secondary);">
+            {{ conductor.taxi.marca }} · Modelo {{ conductor.taxi.modelo }}
+          </p>
+        </div>
+        <a href="" style="margin-left: auto; font-size: 12px; color: var(--color-text-info); text-decoration: none;">Ver taxi →</a>
+      </div>
+    </div>
+
+    {% comment %} Anotaciones {% endcomment %}
+    {% if conductor.anotaciones %}
+    <div style="background: var(--color-background-primary); border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-lg); padding: 1rem 1.25rem; grid-column: 1 / -1;">
+      <p style="font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--color-text-tertiary); margin: 0 0 8px;">Anotaciones</p>
+      <p style="font-size: 14px; color: var(--color-text-secondary); line-height: 1.6; margin: 0;">{{ conductor.anotaciones }}</p>
+    </div>
+    {% endif %}
+
+  </div>
+</div>
+{% endblock %}
+</body>
+</html>

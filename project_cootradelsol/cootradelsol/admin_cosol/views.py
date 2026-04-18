@@ -96,7 +96,7 @@ def editar_conductor(request, id):
             return redirect('lista_conductores')
         else:
             form = ConductorForm(instance=conductor)
-    return render (request, 'agregar_conductor.html', {'form': ConductorForm(), 'conductor': conductor})
+    return render (request, 'agregar_conductor.html', {'form': form})
 
 def detalle_conductor(request, id):
     conductor = get_object_or_404(Conductores, id=id)
@@ -104,10 +104,22 @@ def detalle_conductor(request, id):
 
 from django.db.models import Q
 
-def buscar_conductor(request):
+def buscar_conductores(request):
     query = request.GET.get('q')
-    conductores = Conductores.objects.filter((Q(nombre__icontains=query) | Q(cedula__icontains=query)))
-    return render(request, 'buscar_conductor.html', {'conductores': conductores, 'query': query})
+
+    if query:
+        conductores = Conductores.objects.filter(
+            Q(nombres__icontains=query) |
+            Q(apellidos__icontains=query) |
+            Q(numero_identificacion__icontains=query)
+        )
+    else:
+        conductores = Conductores.objects.all()
+
+    return render(request, 'lista_conductores.html', {
+        'conductores': conductores,
+        'query': query
+    })
 
 def crear_taxi(request):
     if request.method == 'POST':
@@ -129,7 +141,23 @@ def editar_taxi(request, id):
             return redirect('lista_taxis')
         else:
             form = TaxiForm(instance=taxi)
-    return render(request, 'crear_taxi.html', {'form': TaxiForm(), 'taxi': taxi})
+    return render(request, 'crear_taxi.html', {'form': form})
+
+def lista_taxis(request):
+    query = request.GET.get('q')
+
+    if query:
+        taxis = Taxis.objects.filter(
+            Q(numero_interno__icontains=query) |
+            Q(placa__icontains=query)
+        )
+    else:
+        taxis = Taxis.objects.all()
+
+    return render(request, 'lista_taxis.html', {
+        'taxis': taxis,
+        'query': query
+    })
 
 def crear_tarjeta_control(request):
     if request.method == 'POST':
@@ -151,11 +179,15 @@ def editar_tarjeta(request, id):
             return redirect('tarjetas_control')
         else:
             form = TarjetaControlForm(instance=tarjeta_control)
-    return render(request, 'crear_tarjeta_control.html', {'form': TarjetaControlForm(), 'tarjeta_control': tarjeta_control})
+    return render(request, 'crear_tarjeta_control.html', {'form': form})
 
 def lista_taxis(request):
     taxis = Taxis.objects.all()
     return render(request, 'lista_taxis.html', {'taxis':taxis})
+
+def detalle_taxi(request, id):
+    taxi = get_object_or_404(Taxis, id=id)
+    return render(request, 'detalle_taxi.html', {'taxi': taxi})
 
 def lista_conductores(request):
     conductores = Conductores.objects.all()
@@ -164,3 +196,7 @@ def lista_conductores(request):
 def lista_tarjeta_control(request):
     tarjetas_control = TarjetaControls.objects.all()
     return render(request, 'tarjetas_control.html', {'tarjetas_control': tarjetas_control})
+
+def detalle_tarjeta(request, id):
+    tarjeta = get_object_or_404(TarjetaControls, id=id)
+    return render(request, 'detalle_tarjeta.html', {'tarjeta': tarjeta})

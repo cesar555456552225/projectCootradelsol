@@ -361,6 +361,10 @@
                 <i class="bi bi-arrow-left"></i>
                 Volver al panel
             </a>
+            <form method="GET">
+    <input type="text" name="q" placeholder="Buscar..." value="{{ query }}">
+    <button type="submit">Buscar</button>
+</form>
     </div>
 
     <!-- Tabla moderna -->
@@ -395,6 +399,7 @@
                 <td>
                     <span class="badge bg-info text-dark">{{ taxi.tecnomicanica }}</span>
                 </td>
+                <td><a href="{% url 'detalle_taxi' taxi.id %}">Detalle taxi</a></td>
             </tr>
             {% endfor %}
         </tbody>

@@ -1,0 +1,139 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+{% block title %}Taxi — N° {{ taxi.numero_interno }} · {{ taxi.placa }}{% endblock %}
+
+{% block content %}
+<div style="max-width: 860px; margin: 2rem auto; padding: 0 1rem;">
+
+  <a href="{% url 'lista_taxis' %}" style="font-size: 13px; color: var(--color-text-secondary); text-decoration: none; display: inline-flex; align-items: center; gap: 6px; margin-bottom: 1.5rem;">
+    ← Volver a taxis
+  </a>
+
+  {% comment %} Encabezado {% endcomment %}
+  <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 1.5rem;">
+    <div style="width: 60px; height: 60px; border-radius: var(--border-radius-lg); background: #E1F5EE; display: flex; align-items: center; justify-content: center; font-size: 28px; flex-shrink: 0;">
+      🚕
+    </div>
+    <div>
+      <h1 style="margin: 0; font-size: 22px; font-weight: 500; color: var(--color-text-primary);">
+        Taxi N° {{ taxi.numero_interno }}
+      </h1>
+      <p style="margin: 4px 0 0; font-size: 14px; color: var(--color-text-secondary);">
+        Placa {{ taxi.placa }} &nbsp;·&nbsp; {{ taxi.marca }} {{ taxi.modelo }}
+      </p>
+    </div>
+    <div style="margin-left: auto; display: flex; gap: 8px;">
+      <a href=""
+         style="font-size: 13px; padding: 6px 14px; border: 0.5px solid var(--color-border-secondary); border-radius: var(--border-radius-md); text-decoration: none; color: var(--color-text-primary);">
+        Editar
+      </a>
+    </div>
+  </div>
+
+  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+
+    {% comment %} Datos del vehículo {% endcomment %}
+    <div style="background: var(--color-background-primary); border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-lg); padding: 1rem 1.25rem;">
+      <p style="font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--color-text-tertiary); margin: 0 0 12px;">Datos del vehículo</p>
+      <table style="width: 100%; font-size: 13px; border-collapse: collapse;">
+        <tr>
+          <td style="color: var(--color-text-secondary); padding: 5px 0; border-bottom: 0.5px solid var(--color-border-tertiary);">N° interno</td>
+          <td style="text-align: right; padding: 5px 0; border-bottom: 0.5px solid var(--color-border-tertiary); font-weight: 500; color: var(--color-text-primary);">{{ taxi.numero_interno }}</td>
+        </tr>
+        <tr>
+          <td style="color: var(--color-text-secondary); padding: 5px 0; border-bottom: 0.5px solid var(--color-border-tertiary);">Placa</td>
+          <td style="text-align: right; padding: 5px 0; border-bottom: 0.5px solid var(--color-border-tertiary); font-weight: 500; color: var(--color-text-primary);">{{ taxi.placa }}</td>
+        </tr>
+        <tr>
+          <td style="color: var(--color-text-secondary); padding: 5px 0; border-bottom: 0.5px solid var(--color-border-tertiary);">Marca</td>
+          <td style="text-align: right; padding: 5px 0; border-bottom: 0.5px solid var(--color-border-tertiary); color: var(--color-text-primary);">{{ taxi.marca }}</td>
+        </tr>
+        <tr>
+          <td style="color: var(--color-text-secondary); padding: 5px 0;">Modelo (año)</td>
+          <td style="text-align: right; padding: 5px 0; color: var(--color-text-primary);">{{ taxi.modelo }}</td>
+        </tr>
+      </table>
+    </div>
+
+    {% comment %} Radio {% endcomment %}
+    <div style="background: var(--color-background-primary); border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-lg); padding: 1rem 1.25rem;">
+      <p style="font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--color-text-tertiary); margin: 0 0 12px;">Radio</p>
+      <table style="width: 100%; font-size: 13px; border-collapse: collapse;">
+        <tr>
+          <td style="color: var(--color-text-secondary); padding: 5px 0; border-bottom: 0.5px solid var(--color-border-tertiary);">N° radio</td>
+          <td style="text-align: right; padding: 5px 0; border-bottom: 0.5px solid var(--color-border-tertiary); color: var(--color-text-primary);">{{ taxi.radio }}</td>
+        </tr>
+        <tr>
+          <td style="color: var(--color-text-secondary); padding: 5px 0;">Marca radio</td>
+          <td style="text-align: right; padding: 5px 0; color: var(--color-text-primary);">{{ taxi.marca_radio }}</td>
+        </tr>
+      </table>
+    </div>
+
+    {% comment %} Documentos con estado de vencimiento {% endcomment %}
+    <div style="background: var(--color-background-primary); border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-lg); padding: 1rem 1.25rem; grid-column: 1 / -1;">
+      <p style="font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--color-text-tertiary); margin: 0 0 12px;">Documentos</p>
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+
+        {% comment %} SOAT {% endcomment %}
+        <div style="padding: 12px; background: var(--color-background-secondary); border-radius: var(--border-radius-md);">
+          <p style="font-size: 12px; color: var(--color-text-secondary); margin: 0 0 4px;">SOAT</p>
+          {% if taxi.soat %}
+            <p style="font-size: 15px; font-weight: 500; margin: 0; color: var(--color-text-primary);">{{ taxi.soat|date:"d/m/Y" }}</p>
+            {% now "Y-m-d" as today %}
+            {% if taxi.soat|date:"Y-m-d" < today %}
+              <span style="font-size: 11px; background: #FCEBEB; color: #A32D2D; padding: 2px 8px; border-radius: var(--border-radius-md); margin-top: 4px; display: inline-block;">Vencido</span>
+            {% else %}
+              <span style="font-size: 11px; background: #EAF3DE; color: #3B6D11; padding: 2px 8px; border-radius: var(--border-radius-md); margin-top: 4px; display: inline-block;">Vigente</span>
+            {% endif %}
+          {% else %}
+            <p style="font-size: 14px; color: var(--color-text-tertiary); margin: 0;">No registrado</p>
+          {% endif %}
+        </div>
+
+        {% comment %} Tecnomecánica {% endcomment %}
+        <div style="padding: 12px; background: var(--color-background-secondary); border-radius: var(--border-radius-md);">
+          <p style="font-size: 12px; color: var(--color-text-secondary); margin: 0 0 4px;">Tecnomecánica</p>
+          {% if taxi.tecnomicanica %}
+            <p style="font-size: 15px; font-weight: 500; margin: 0; color: var(--color-text-primary);">{{ taxi.tecnomicanica|date:"d/m/Y" }}</p>
+            {% now "Y-m-d" as today %}
+            {% if taxi.tecnomicanica|date:"Y-m-d" < today %}
+              <span style="font-size: 11px; background: #FCEBEB; color: #A32D2D; padding: 2px 8px; border-radius: var(--border-radius-md); margin-top: 4px; display: inline-block;">Vencida</span>
+            {% else %}
+              <span style="font-size: 11px; background: #EAF3DE; color: #3B6D11; padding: 2px 8px; border-radius: var(--border-radius-md); margin-top: 4px; display: inline-block;">Vigente</span>
+            {% endif %}
+          {% else %}
+            <p style="font-size: 14px; color: var(--color-text-tertiary); margin: 0;">No registrada</p>
+          {% endif %}
+        </div>
+
+      </div>
+    </div>
+
+    {% comment %} Conductores asociados {% endcomment %}
+    {% if taxi.conductores_set.all %}
+    <div style="background: var(--color-background-primary); border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-lg); padding: 1rem 1.25rem; grid-column: 1 / -1;">
+      <p style="font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--color-text-tertiary); margin: 0 0 12px;">Conductores asociados</p>
+      {% for c in taxi.conductores_set.all %}
+      <div style="display: flex; align-items: center; gap: 10px; padding: 8px 0; {% if not forloop.last %}border-bottom: 0.5px solid var(--color-border-tertiary);{% endif %}">
+        <div style="width: 32px; height: 32px; border-radius: 50%; background: #B5D4F4; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 500; color: #0C447C; flex-shrink: 0;">
+          {{ c.nombres|slice:":1" }}{{ c.apellidos|slice:":1" }}
+        </div>
+        <span style="font-size: 14px; color: var(--color-text-primary);">{{ c.nombres }} {{ c.apellidos }}</span>
+        <a href="" style="margin-left: auto; font-size: 12px; color: var(--color-text-secondary); text-decoration: none;">Ver →</a>
+      </div>
+      {% endfor %}
+    </div>
+    {% endif %}
+
+  </div>
+</div>
+{% endblock %}
+</body>
+</html>

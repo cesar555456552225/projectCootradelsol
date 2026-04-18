@@ -475,10 +475,10 @@
                 </td>
                 <td>{{ tarjeta.vencimientorefrendada1 }}</td>
                 <td>
-                    <span class="badge bg-warning text-dark"></span>
+                    <a href="{% url 'detalle_tarjeta' tarjeta.id %}">detalle tarjeta</a>
                 </td>
                 <td>
-                    <span class="badge bg-info text-dark"></span>
+                    <a href="">Editar</a>
                 </td>
             </tr>
             {% endfor %}
